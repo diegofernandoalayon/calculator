@@ -1,12 +1,12 @@
 import './button.css'
-export default function Button({children,...props}){
+export default function Button({children,handleClick,...props}){
 
   //darkGray, orange, lightGray 
-  props.orange ? console.log('todo'):console.log('nada')
-  console.log(props)
+  // props.orange ? console.log('todo'):console.log('nada')
+  
   return (
     <>
-      <button className="btn orange">{children}</button>
+      <button className="btn orange" onClick={()=> {handleClick(children)}}>{children}</button>
     </>
   )
 }

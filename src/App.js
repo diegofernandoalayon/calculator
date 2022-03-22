@@ -1,17 +1,19 @@
-import Button from './components/Button'
+import {useState} from 'react'
 import Display from './components/Display'
 import './App.css'
+import ButtonPanel from './components/ButtonPanel';
 
 function App() {
+  const [value, setValue] = useState('')
+  const handleClick = (event) =>{
+    console.log(event)
+    setValue(event)
+  }
   return (
     <div className="App">
       <div className='container'>
-        <Display value={23}/>
-        <Button orange>3</Button>
-        <Button>4</Button>
-        <Button>5</Button>
-        <Button>6</Button>
-        <Button>7</Button>
+        <Display value={value}/>
+        <ButtonPanel handleClick={handleClick}/>
       </div>
     </div>
   );
