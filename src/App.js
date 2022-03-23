@@ -2,12 +2,12 @@ import {useState} from 'react'
 import Display from './components/Display'
 import './App.css'
 import ButtonPanel from './components/ButtonPanel';
+import calculate from './logic/calculate';
 
 function App() {
   const [value, setValue] = useState('')
   const handleClick = (event) =>{
-    console.log(event)
-    setValue(event)
+    calculate(setValue,event)
   }
   return (
     <div className="App">
