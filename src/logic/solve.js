@@ -7,7 +7,9 @@ const OP = {
 }
 const res = 'Syntax Error'
 const solve = ({num1 = 0, num2, operation='+'}={}) => {
-  num2 = (operation === '/' || operation === 'X') ? 1 : 0
+  if(num2 === undefined){
+    num2 = ((operation === '/' || operation === 'X') ? 1 : 0)
+  }
   return OP[operation] 
     ? OP[operation](num1, num2)
     : res
