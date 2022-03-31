@@ -6,7 +6,7 @@ const OP = {
 
 }
 const res = 'Syntax Error'
-const solve = ({num1 = 0, num2, operation='+'}={}) => {
+const solve = ({num1 = 0, num2, operation = null}={}) => {
   if(num2 === undefined){
     num2 = ((operation === '/' || operation === 'X') ? 1 : 0)
   }
