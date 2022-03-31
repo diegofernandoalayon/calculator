@@ -55,7 +55,7 @@ describe('subtraction',() => {
   })
 })
 
-describe.only('mutiply', ()=> {
+describe('mutiply', ()=> {
   test('two numbers',() => {
     const res = solve({num1:3,num2:1,operation:'X'})
     expect(res).toBe(3)
@@ -78,6 +78,33 @@ describe.only('mutiply', ()=> {
   })
   test('without any number', ()=> {
     const res = solve({operation: 'X'})
+    expect(res).toBe(0)
+  })
+})
+
+describe.only('division', ()=> {
+  test('two numbers',() => {
+    const res = solve({num1:3,num2:1,operation:'/'})
+    expect(res).toBe(3)
+  })
+  test('one number and zero',() => {
+    const res = solve({num1:3,num2:0,operation:'/'})
+    expect(res).toBe('Math Error')
+  })
+  test('zero and one number',() => {
+    const res = solve({num1:0, num2:1,operation:'/'})
+    expect(res).toBe(0)
+  })
+  test('only the first number', ()=> {
+    const res = solve({num1: 44, operation:'/'})
+    expect(res).toBe(44)
+  })
+  test('only the second number', ()=> {
+    const res = solve({num2:8, operation: '/'})
+    expect(res).toBe(0)
+  })
+  test('without any number', ()=> {
+    const res = solve({operation: '/'})
     expect(res).toBe(0)
   })
 })
