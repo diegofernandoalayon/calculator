@@ -82,7 +82,7 @@ describe('mutiply', ()=> {
   })
 })
 
-describe.only('division', ()=> {
+describe('division', ()=> {
   test('two numbers',() => {
     const res = solve({num1:3,num2:1,operation:'/'})
     expect(res).toBe(3)
@@ -106,5 +106,11 @@ describe.only('division', ()=> {
   test('without any number', ()=> {
     const res = solve({operation: '/'})
     expect(res).toBe(0)
+  })
+})
+describe('Syntax Error', () => {
+  test('no operation', ()=> {
+    const res = solve({num1:2,num2:3})
+    expect(res).toBe('Syntax Error')
   })
 })
