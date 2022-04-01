@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <div className='container'>
-        <Display value={value.total}/>
+        <Display value={value.total || value.before}/>
         <ButtonPanel handleClick={handleClick}/>
       </div>
     </div>

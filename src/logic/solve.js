@@ -11,7 +11,7 @@ const solve = ({num1 = 0, num2, operation = null}={}) => {
     num2 = ((operation === '/' || operation === 'X') ? 1 : 0)
   }
   return OP[operation] 
-    ? OP[operation](num1, num2)
+    ? OP[operation](+num1, +num2)
     : res
 
 }
