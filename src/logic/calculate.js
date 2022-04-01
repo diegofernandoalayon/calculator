@@ -47,6 +47,12 @@ const calculate = (state,event) =>{
       total: ''
     }
   }
+  if(event === '+/-'){
+    return{
+      ...state,
+      total: String(-1*(+state.total))
+    }
+  }
   // if(event === 'X'){
   //   if(state.before){
   //     return{
