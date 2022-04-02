@@ -16,11 +16,19 @@ const calculate = (state,event) =>{
     }
   }
   if(event === '.'){
-    return state.includes('.') ? state : state + event
+    if(!state.total){
+      return {
+        ...state,
+        total: '0.'
+      }
+    }
+    return {
+      ...state,
+      total: state.total.includes('.') ? state.total : state.total + event
+    }
   
   }
   if(event === '='){
-    console.log('estoy en igual')
     if(state.before){
 
       console.log('todo')
@@ -30,6 +38,13 @@ const calculate = (state,event) =>{
         total: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
         before: null,
       }
+    }
+  }
+
+  if(event === '+/-'){
+    return{
+      ...state,
+      total: String(-1*(+state.total))
     }
   }
   if(event === '+'){
@@ -47,10 +62,19 @@ const calculate = (state,event) =>{
       total: ''
     }
   }
-  if(event === '+/-'){
-    return{
-      ...state,
-      total: String(-1*(+state.total))
+  if(event === '%'){ // revisar operaciones
+    
+    if(state.total){
+      return{
+        ...state,
+        total: String(solve({num1:state.total, num2: '100', operation: '/'}))
+      }
+    }else if(state.total && state.operation){
+      return{
+        ...state,
+        total: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
+        before: null,
+      }
     }
   }
   // if(event === 'X'){
