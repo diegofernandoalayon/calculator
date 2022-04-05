@@ -62,18 +62,33 @@ const calculate = (state,event) =>{
       total: ''
     }
   }
-  if(event === '%'){ // revisar operaciones
+  if(event === 'X'){
+    if(state.before){
+      return{
+        ...state,
+        total: '',
+        before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
+      }
+    }
+    return{
+      ...state,
+      before: state.total,
+      operation: 'X',
+      total: ''
+    }
+  }
+  if(event === '%'){ // revisar operaciones, tener en cuenta que funcionaria para la multiplicacion, pero para la suma deberia sacar el porcentaje del primer numero y luego a el numero sumarle su porcentaje
     
-    if(state.total){
+   if(state.total && state.operation){
+      return{
+        ...state,
+        total: String(solve({num1:state.before,num2:state.total,operation:state.operation})/100),
+        before: null,
+      }
+    }else if(state.total){
       return{
         ...state,
         total: String(solve({num1:state.total, num2: '100', operation: '/'}))
-      }
-    }else if(state.total && state.operation){
-      return{
-        ...state,
-        total: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-        before: null,
       }
     }
   }
