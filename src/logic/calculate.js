@@ -30,9 +30,6 @@ const calculate = (state,event) =>{
   }
   if(event === '='){
     if(state.before){
-
-      console.log('todo')
-      console.log(state)
       return{
         ...state,
         total: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
@@ -77,42 +74,31 @@ const calculate = (state,event) =>{
       total: ''
     }
   }
-  if(event === '%'){ // revisar operaciones, tener en cuenta que funcionaria para la multiplicacion, pero para la suma deberia sacar el porcentaje del primer numero y luego a el numero sumarle su porcentaje
+  if(event === '%'){
     
    if(state.total && state.operation){
-      return{
-        ...state,
-        total: String(solve({num1:state.before,num2:state.total,operation:state.operation})/100),
-        before: null,
-      }
-    }else if(state.total){
-      return{
-        ...state,
-        total: String(solve({num1:state.total, num2: '100', operation: '/'}))
+      if(state.operation === '-' || state.operation === '+'){
+        return {
+          ...state,
+          total: String(+state.before + ((+state.before * +state.total)/100)),
+          before: null,
+          operation: null
+        }
+      }else if(state.operation === 'X'){
+        console.log('estadooo',state)
+        return{
+          ...state,
+          total: String((+state.before * +state.total)/100),
+          before: null
+          
+        }
       }
     }
+    return {
+      total: String(+state.total/100)
+    }
   }
-  // if(event === 'X'){
-  //   if(state.before){
-  //     return{
-  //       ...state,
-  //       total: '',
-  //       before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-  //     }
-  //   }
-  //   return{
-  //     ...state,
-  //     before: state.total,
-  //     operation: 'X',
-  //     total: ''
-  //   }
-  // }
-  // if(event === '+'){
-  //   return 
-  // }
-  // else{
-  //   return event
-  // }
+
   return state
 }
 export default calculate
