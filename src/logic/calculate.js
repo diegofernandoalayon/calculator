@@ -1,5 +1,28 @@
 import isNumber from './isNumber'
 import solve from './solve'
+
+const RESPONSE = (op, state) => {
+  if(state.before){
+    return{
+      ...state,
+      total: '',
+      before: String(solve({num1: state.before, num2: state.total, operation: state.operation}))
+    }
+  }
+  return{
+    ...state,
+    before: state.total,
+    operation: op,
+    total: ''  
+  }
+}
+const OPERATION = {
+  '+': (state) => RESPONSE('+', state),
+  '-': (state) => RESPONSE('-', state),
+  'X': (state) => RESPONSE('X', state),
+  '/': (state) => RESPONSE('/', state)
+}
+
 const calculate = (state,event) =>{
   console.log(event)
   if(event === 'C'){
@@ -26,7 +49,7 @@ const calculate = (state,event) =>{
       ...state,
       total: state.total.includes('.') ? state.total : state.total + event
     }
-  
+    
   }
   if(event === '='){
     if(state.before){
@@ -37,6 +60,32 @@ const calculate = (state,event) =>{
       }
     }
   }
+  if(event === '%'){
+    
+    if(state.total && state.operation){ // hacer el caso para el menos, y agregar todas las operaciones para probar el dividiendo
+       if(state.operation === '-' || state.operation === '+'){
+         return {
+           ...state,
+           total: String(+state.before + ((+state.before * +state.total)/100)),
+           before: null,
+           operation: null
+         }
+       }else if(state.operation === 'X'){
+         console.log('estadooo',state)
+         return{
+           ...state,
+           total: String((+state.before * +state.total)/100),
+           before: null
+           
+         }
+       }
+     }
+     return {
+       total: String(+state.total/100)
+     }
+   }
+
+   
 
   if(event === '+/-'){
     return{
@@ -44,60 +93,39 @@ const calculate = (state,event) =>{
       total: String(-1*(+state.total))
     }
   }
-  if(event === '+'){
-    if(state.before){
-      return{
-        ...state,
-        total: '',
-        before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-      }
-    }
-    return{
-      ...state,
-      before: state.total,
-      operation: '+',
-      total: ''
-    }
-  }
-  if(event === 'X'){
-    if(state.before){
-      return{
-        ...state,
-        total: '',
-        before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-      }
-    }
-    return{
-      ...state,
-      before: state.total,
-      operation: 'X',
-      total: ''
-    }
-  }
-  if(event === '%'){
-    
-   if(state.total && state.operation){
-      if(state.operation === '-' || state.operation === '+'){
-        return {
-          ...state,
-          total: String(+state.before + ((+state.before * +state.total)/100)),
-          before: null,
-          operation: null
-        }
-      }else if(state.operation === 'X'){
-        console.log('estadooo',state)
-        return{
-          ...state,
-          total: String((+state.before * +state.total)/100),
-          before: null
-          
-        }
-      }
-    }
-    return {
-      total: String(+state.total/100)
-    }
-  }
+  
+  return OPERATION[event] ? OPERATION[event](state) : state
+
+  // if(event === '+'){
+  //   if(state.before){
+  //     return{
+  //       ...state,
+  //       total: '',
+  //       before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
+  //     }
+  //   }
+  //   return{
+  //     ...state,
+  //     before: state.total,
+  //     operation: '+',
+  //     total: ''
+  //   }
+  // }
+  // if(event === 'X'){
+  //   if(state.before){
+  //     return{
+  //       ...state,
+  //       total: '',
+  //       before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
+  //     }
+  //   }
+  //   return{
+  //     ...state,
+  //     before: state.total,
+  //     operation: 'X',
+  //     total: ''
+  //   }
+  // }
 
   return state
 }
