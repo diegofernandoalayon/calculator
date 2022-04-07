@@ -71,12 +71,19 @@ const calculate = (state,event) =>{
            operation: null
          }
        }else if(state.operation === 'X'){
-         console.log('estadooo',state)
          return{
            ...state,
            total: String((+state.before * +state.total)/100),
-           before: null
+           before: null,
+           operation: null
            
+         }
+       }else if(state.operation === '/'){
+         return {
+           ...state,
+           total: String((+state.before / (+state.total/100))),
+           operation: null,
+           before: null
          }
        }
      }
@@ -95,38 +102,5 @@ const calculate = (state,event) =>{
   }
   
   return OPERATION[event] ? OPERATION[event](state) : state
-
-  // if(event === '+'){
-  //   if(state.before){
-  //     return{
-  //       ...state,
-  //       total: '',
-  //       before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-  //     }
-  //   }
-  //   return{
-  //     ...state,
-  //     before: state.total,
-  //     operation: '+',
-  //     total: ''
-  //   }
-  // }
-  // if(event === 'X'){
-  //   if(state.before){
-  //     return{
-  //       ...state,
-  //       total: '',
-  //       before: String(solve({num1:state.before,num2:state.total,operation:state.operation})),
-  //     }
-  //   }
-  //   return{
-  //     ...state,
-  //     before: state.total,
-  //     operation: 'X',
-  //     total: ''
-  //   }
-  // }
-
-  return state
 }
 export default calculate
