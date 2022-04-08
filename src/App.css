@@ -1,12 +1,41 @@
+body{
+  /* background: rgb(245, 149, 149); */
+  height: 100vh;
+  /* background-image: url(./foto2.jpg);
+  background-size: cover;
+  background-position: center; */
+  background: rgb(196,122,223);
+  background: linear-gradient(180deg, rgba(196,122,223,1) 0%, rgba(145,30,171,1) 0%, rgba(93,156,142,1) 85%);
+}
 .App {
-  text-align: center;
-  background-color: aliceblue;
+  /* text-align: center;
+  background-color: aliceblue; */
+
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: rgba(255, 255,205,0.3);
+  backdrop-filter: blur(12px);
 }
 
-.container{
+/* .container{
   width: 50%;
   margin: 0 auto;
   background-color: black;
   height: 100vh;
   padding: 20px;
+} */
+.container{
+  background-color: black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+@media(min-width: 500px){
+  .container{
+    width: 500px;
+  }
 }
