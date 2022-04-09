@@ -1,11 +1,24 @@
 .btn{
-  border-radius: 50%;
+  border-radius: 60px;
   font-size: 2rem;
-  width: 40px;
-  height: 40px;
   cursor: pointer;
+  border: none;
 }
 .orange{
-  background-color: orange;
-  border: none;
+  background-color: #fe9505;
+  color: white;
+}
+.lightGray{
+  background-color: #a5a5a5;
+  color: black;
+}
+.darkGray{
+  background-color: #333333;
+  color: white;
+}
+.btn:hover{
+  filter: opacity(0.8)
+}
+.wide{
+  grid-column: 1/3;
 }
