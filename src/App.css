@@ -31,6 +31,8 @@ body{
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
   height: 100%;
   position: relative;
   width: 100%;
