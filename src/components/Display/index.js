@@ -1,3 +1,4 @@
+import './display.css'
 export default function Display({value}){
 
   let fontSize = '60px'
@@ -7,7 +8,7 @@ export default function Display({value}){
  
   return (
     <div>
-      <div style={{color:'white',fontSize:fontSize, textAlign: 'right', padding: '20px', height: '15vh', display: 'flex', justifyContent:'flex-end', alignItems: 'center'}}>{value||'0'}</div>
+      <div className='display' style={{fontSize:fontSize}}>{value||'0'}</div>
     </div>
   )
 }
