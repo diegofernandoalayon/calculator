@@ -9,7 +9,7 @@ export default function ButtonPanel({handleClick}){
           <Button handleClick={handleClick} lightGray>C</Button>
           <Button handleClick={handleClick} lightGray>+/-</Button>
           <Button handleClick={handleClick} lightGray>%</Button>
-          <Button handleClick={handleClick} orange>÷</Button>
+          <Button handleClick={handleClick} orange>&#247;</Button>
         
        
           <Button handleClick={handleClick}>7</Button>
