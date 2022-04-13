@@ -9,13 +9,13 @@ export default function ButtonPanel({handleClick}){
           <Button handleClick={handleClick} lightGray>C</Button>
           <Button handleClick={handleClick} lightGray>+/-</Button>
           <Button handleClick={handleClick} lightGray>%</Button>
-          <Button handleClick={handleClick} orange>/</Button>
+          <Button handleClick={handleClick} orange>÷</Button>
         
        
           <Button handleClick={handleClick}>7</Button>
           <Button handleClick={handleClick}>8</Button>
           <Button handleClick={handleClick}>9</Button>
-          <Button handleClick={handleClick} orange>X</Button>
+          <Button handleClick={handleClick} orange>x</Button>
         
         
           <Button handleClick={handleClick}>4</Button>

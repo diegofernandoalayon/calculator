@@ -19,8 +19,8 @@ const RESPONSE = (op, state) => {
 const OPERATION = {
   '+': (state) => RESPONSE('+', state),
   '-': (state) => RESPONSE('-', state),
-  'X': (state) => RESPONSE('X', state),
-  '/': (state) => RESPONSE('/', state)
+  'x': (state) => RESPONSE('X', state),
+  '÷': (state) => RESPONSE('/', state)
 }
 
 const calculate = (state,event) =>{
