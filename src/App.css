@@ -37,7 +37,7 @@ body{
   flex-direction: column;
   /* flex-wrap: wrap; */
   align-content: space-around;
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
   width: 100%;
 }
