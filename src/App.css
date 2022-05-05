@@ -41,7 +41,7 @@ body{
   position: relative;
   width: 100%;
 }
-@media(min-width: 580px){
+@media screen and (min-width: 580px){
   .container{
     width: 460px;
   }
