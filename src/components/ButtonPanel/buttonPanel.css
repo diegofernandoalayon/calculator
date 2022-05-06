@@ -1,8 +1,24 @@
 .panel{
   display: grid;
-  gap: 20px;
-  grid-auto-rows: 90px;
-  grid-template-columns: repeat(4,90px);
-  padding: 20px;
+  gap: 10px;
+  grid-auto-rows: 55px;
+  grid-template-columns: repeat(4,55px);
+  padding: 10px;
   justify-content: center;
+}
+@media screen and (min-width: 290px){
+  .panel{
+    grid-auto-rows: 70px;
+    grid-template-columns: repeat(4,70px);
+    gap: 15px;
+    padding: 15px;
+  }
+}
+@media screen and (min-width: 460px){
+  .panel{
+    grid-auto-rows: 90px;
+    grid-template-columns: repeat(4,90px);
+    gap: 20px;
+    padding: 20px;
+  }
 }
