@@ -7,14 +7,17 @@ export default function Display({value}){
   }
 
   const DisplayValue = (value) => {
-    if(value.includes('.')) return value
+    
     if(value.length > 3){
-      const newValue = value.split('')
+      const [value1,value2] = value.split('.')
+      const newValue = value1.split('')
                              .reverse()
                              .map((n,i) => i%3=== 0 ? `${n},`:n)
                              .reverse()
                              .join('')
-                             
+      if(value.includes('.')){
+        return newValue.substr(0, newValue.length-1)+'.'+value2
+      } 
       return newValue.substr(0, newValue.length-1)
     }
     return value
