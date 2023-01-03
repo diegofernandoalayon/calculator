@@ -63,10 +63,17 @@ const calculate = (state,event) =>{
   if(event === '%'){
     
     if(state.total && state.operation){ // hacer el caso para el menos, y agregar todas las operaciones para probar el dividiendo
-       if(state.operation === '-' || state.operation === '+'){
+       if(state.operation === '+'){
          return {
            ...state,
            total: String(+state.before + ((+state.before * +state.total)/100)),
+           before: null,
+           operation: null
+         }
+       }else if(state.operation === '-'){
+         return {
+           ...state,
+           total: String(+state.before - ((+state.before * +state.total)/100)),
            before: null,
            operation: null
          }
