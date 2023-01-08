@@ -1,29 +1,11 @@
-import {useState} from 'react'
-import Display from './components/Display'
-import './App.css'
-import ButtonPanel from './components/ButtonPanel';
-import calculate from './logic/calculate';
+import Calculator from './Pages/Calculator';
 
-const INITIAL_STATE = {
-  total: '',
-  before: null,
-  operation: null
-}
+
 
 function App() {
-  const [value, setValue] = useState(INITIAL_STATE)
-  const handleClick = (event) =>{
-    setValue(calculate(value,event))
-    
-  }
-  console.log(value.total)
+
   return (
-    <div className="App">
-      <div className='container'>
-        <Display value={value.total || value.before}/>
-        <ButtonPanel handleClick={handleClick}/>
-      </div>
-    </div>
+    <Calculator />
   );
 }
 
