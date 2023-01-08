@@ -8,12 +8,12 @@ const useKey = (value, callback) => {
   // })
   useEffect(() => {
     const handle = (event) => {
-      console.log(event.key)
+      console.log(event)
       callback(value, event.key)
 
     }
-    document.addEventListener('keypress', handle);
-    return () => document.removeEventListener('keypress', handle);
+    document.addEventListener('keydown', handle);
+    return () => document.removeEventListener('keydown', handle);
   },[])
   // return [queso]
 }

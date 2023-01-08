@@ -27,7 +27,7 @@ const OPERATION = {
 
 const calculate = (state,event) =>{
 
-  if(event === 'C'){
+  if(event === 'C' || event === 'Backspace'){
     return {
       total: '',
       before: null,
@@ -35,7 +35,6 @@ const calculate = (state,event) =>{
     }
   }
   if(isNumber(event)){
-    console.log('si',{event:event}, typeof event, state)
     return {
       ...state,
       total: state.total + event
