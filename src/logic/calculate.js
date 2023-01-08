@@ -20,11 +20,13 @@ const OPERATION = {
   '+': (state) => RESPONSE('+', state),
   '-': (state) => RESPONSE('-', state),
   'x': (state) => RESPONSE('X', state),
-  '÷': (state) => RESPONSE('/', state)
+  '÷': (state) => RESPONSE('/', state),
+  '*': (state) => RESPONSE('X', state),
+  '/': (state) => RESPONSE('/', state),
 }
 
 const calculate = (state,event) =>{
-  console.log(event)
+
   if(event === 'C'){
     return {
       total: '',
@@ -33,6 +35,7 @@ const calculate = (state,event) =>{
     }
   }
   if(isNumber(event)){
+    console.log('si',{event:event}, typeof event, state)
     return {
       ...state,
       total: state.total + event
@@ -51,7 +54,7 @@ const calculate = (state,event) =>{
     }
     
   }
-  if(event === '='){
+  if(event === '=' || event === 'Enter'){
     if(state.before){
       return{
         ...state,
@@ -77,7 +80,7 @@ const calculate = (state,event) =>{
            before: null,
            operation: null
          }
-       }else if(state.operation === 'X'){
+       }else if(state.operation === 'X' || state.operation === '*'){
          return{
            ...state,
            total: String((+state.before * +state.total)/100),
