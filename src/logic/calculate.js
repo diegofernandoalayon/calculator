@@ -27,7 +27,14 @@ const OPERATION = {
 
 const calculate = (state,event) =>{
 
-  if(event === 'C' || event === 'Backspace'){
+  if(event === 'Backspace'){
+    return {
+      ...state,
+      total: state.total.slice(0, state.total.length-1),
+    }
+  }
+
+  if(event === 'C' || event === 'c'){
     return {
       total: '',
       before: null,

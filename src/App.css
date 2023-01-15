@@ -5,13 +5,16 @@ body{
   background-size: cover;
   background-position: center; */
   /* background: rgb(196,122,223); */
-  background: linear-gradient(180deg, rgba(196,122,223,1) 0%, rgba(145,30,171,1) 0%, rgba(93,156,142,1) 85%);
-  background: linear-gradient(to right, #C8d2fc, #facace, #feefc7);
+  background: linear-gradient(180deg, rgba(196, 122, 223, 0.774) 0%, rgba(145, 30, 171, 0.678) 0%, rgba(93, 156, 142, 0.616) 85%);
+  backdrop-filter: blur(3px);
+  /* background: linear-gradient(to right, #C8d2fc, #facace, #feefc7); */
   font-family: 'Poppins', sans-serif;
 }
 *{
   font-family: 'Poppins', sans-serif;
 }
+ /* p */
+
 .App {
   /* text-align: center;
   background-color: aliceblue; */
