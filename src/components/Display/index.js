@@ -1,9 +1,10 @@
 import './display.css'
-export default function Display({value}){
+
+export default function Display({value, handleDoubleClick}){
 
   let fontSize = '60px'
   if(value){
-    fontSize = value.length < 10 ? '60px' : '40px' 
+    fontSize = value.length < 9 ? '60px' :  value.length<13 ? '40px' : '25px' 
   }
 
   const DisplayValue = (value) => {
@@ -11,10 +12,10 @@ export default function Display({value}){
     if(value.length > 3){
       const [value1,value2] = value.split('.')
       const newValue = value1.split('')
-                             .reverse()
-                             .map((n,i) => i%3=== 0 ? `${n},`:n)
-                             .reverse()
-                             .join('')
+      .reverse()
+      .map((n,i) => i%3=== 0 ? `${n},`:n)
+      .reverse()
+      .join('')
       if(value.includes('.')){
         return newValue.substr(0, newValue.length-1)+'.'+value2
       } 
@@ -27,7 +28,10 @@ export default function Display({value}){
     <div>
       <div 
         className='display' 
-        style={{fontSize:fontSize}}>
+        style={{fontSize:fontSize}}
+        onDoubleClick={handleDoubleClick}
+        onTouchMove={handleDoubleClick}
+        >
           {
             value 
               ? 

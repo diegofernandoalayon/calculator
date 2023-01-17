@@ -3,6 +3,7 @@ import ButtonPanel from "../../components/ButtonPanel"
 import Display from "../../components/Display"
 import calculate from "../../logic/calculate"
 import useKey from "../../hooks/useKey"
+import debounce from "just-debounce-it"
 
 import '../../App.css'
 
@@ -14,17 +15,14 @@ const INITIAL_STATE = {
 
 const Calculator = () => {
   const [value, setValue] = useState(INITIAL_STATE)
-  // console.log('en calculator', keyPress)
-  // useEffect(() => {
-  //   console.log('se esta renderizando calculator2')
-  //   console.log({'esto es keyPress' : keyPress})
-  //   setValue(calculate(value,keyPress))
-  // },[])
+
+  // const handleDoubleClick = debounce((key='Backspace') => setValue((a)=> calculate(a,'Backspace')),200)
+  const handleDoubleClick = useCallback(debounce((key='Backspace') => {
+    setValue((a)=> calculate(a,'Backspace'))
+  },200),[])
   
   const handleKeys = useCallback((valuee, key) => {
 
-    // revisar por que no ejecuta nada con el teclado
-    // no se esta actualizando el estado
     setValue((a)=> calculate(a,key))
     // setValue(calculate(valuee,key)) -- no funciona porque toma la referencia de cuando se crea.
   },[])
@@ -37,7 +35,7 @@ const Calculator = () => {
   return(
     <div className="App">
       <div className='container'>
-        <Display value={value.total || value.before}/>
+        <Display value={value.total || value.before} handleDoubleClick={handleDoubleClick}/>
         <ButtonPanel handleClick={handleClick}/>
       </div>
     </div>
