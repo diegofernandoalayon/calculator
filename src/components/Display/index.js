@@ -25,7 +25,7 @@ export default function Display({value, handleDoubleClick}){
   }
  
   return (
-    <div>
+    <div className='container-display'>
       <div 
         className='display' 
         style={{fontSize:fontSize}}

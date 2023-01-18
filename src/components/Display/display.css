@@ -4,7 +4,12 @@
   padding: 20px;
   height: 15vh;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  overflow: auto;
   
+}
+.container-display{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
