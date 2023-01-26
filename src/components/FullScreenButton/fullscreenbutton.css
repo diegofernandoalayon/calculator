@@ -1,0 +1,7 @@
+.btn-fullscreen{
+  background: transparent;
+  border: none;
+  display: flex;
+  padding: 2px;
+  cursor: pointer;
+}
