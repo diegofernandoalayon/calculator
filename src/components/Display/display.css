@@ -8,6 +8,17 @@
   overflow: auto;
   
 }
+.container-btn-fullscreen{
+  background-color: rgba(255,255,255,0.6);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin: 2px;
+  color: blue;
+  border-radius: 8px;
+  /* display: flex; */
+}
 .container-display{
   width: 100%;
   display: flex;

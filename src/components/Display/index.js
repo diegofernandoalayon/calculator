@@ -1,3 +1,6 @@
+// components
+import FullScreenButton from '../FullScreenButton'
+// styles
 import './display.css'
 
 export default function Display({value, handleDoubleClick}){
@@ -26,6 +29,9 @@ export default function Display({value, handleDoubleClick}){
  
   return (
     <div className='container-display'>
+      <div className='container-btn-fullscreen'>
+        <FullScreenButton />
+      </div>
       <div 
         className='display' 
         style={{fontSize:fontSize}}
