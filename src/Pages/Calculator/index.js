@@ -21,12 +21,12 @@ const Calculator = () => {
     setValue((a)=> calculate(a,'Backspace'))
   },200),[])
   
-  const handleKeys = useCallback((_valuee, key) => {
+  const handleKeys = useCallback((key) => {
 
     setValue((a)=> calculate(a,key))
     // setValue(calculate(valuee,key)) -- no funciona porque toma la referencia de cuando se crea.
   },[])
-  useKey(value, handleKeys)
+  useKey(handleKeys)
   const handleClick = (event) =>{
 
     setValue(calculate(value,event))

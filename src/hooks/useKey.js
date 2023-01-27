@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useKey = (value, callback) => {
+const useKey = (callback) => {
   // const callbackRef = useRef(callback)
 
   // useEffect(() => {
@@ -8,7 +8,7 @@ const useKey = (value, callback) => {
   // })
   useEffect(() => {
     const handle = (event) => {
-      callback(value, event.key)
+      callback(event.key)
 
     }
     document.addEventListener('keydown', handle);

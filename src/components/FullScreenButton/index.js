@@ -22,13 +22,12 @@ const FullScreenButton = () => {
       setIsFullScreen(true)
     }
   }
-  const handleKey = (_v,key) => {
+  const handleKey = (key) => {
     if(key === 'f' || key === 'F'){
-      console.log({value: _v})
       handleScreen()
     }
   }
-  useKey(0,handleKey)
+  useKey(handleKey)
   return (
     <>
       <button
