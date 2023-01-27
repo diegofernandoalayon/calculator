@@ -17,11 +17,11 @@ const Calculator = () => {
   const [value, setValue] = useState(INITIAL_STATE)
 
   // const handleDoubleClick = debounce((key='Backspace') => setValue((a)=> calculate(a,'Backspace')),200)
-  const handleDoubleClick = useCallback(debounce((key='Backspace') => {
+  const handleDoubleClick = useCallback(debounce((_key='Backspace') => {
     setValue((a)=> calculate(a,'Backspace'))
   },200),[])
   
-  const handleKeys = useCallback((valuee, key) => {
+  const handleKeys = useCallback((_valuee, key) => {
 
     setValue((a)=> calculate(a,key))
     // setValue(calculate(valuee,key)) -- no funciona porque toma la referencia de cuando se crea.
