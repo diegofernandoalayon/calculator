@@ -7,6 +7,7 @@ import Minimise from "../Icons/Minimise";
 
 // styles
 import './fullscreenbutton.css'
+import useKey from '../../hooks/useKey';
 
 const FullScreenButton = () => {
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -21,6 +22,13 @@ const FullScreenButton = () => {
       setIsFullScreen(true)
     }
   }
+  const handleKey = (_v,key) => {
+    if(key === 'f' || key === 'F'){
+      console.log({value: _v})
+      handleScreen()
+    }
+  }
+  useKey(0,handleKey)
   return (
     <>
       <button
