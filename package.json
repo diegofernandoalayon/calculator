@@ -24,11 +24,11 @@
       "plugin:react/recommended",
       "plugin:react/jsx-runtime"
     ],
-    "rules":{
+    "rules": {
       "react/prop-types": 0
     },
-    "env":{
-      "jest":true
+    "env": {
+      "jest": true
     }
   },
   "browserslist": {
@@ -42,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "standard": "17.0.0"
   }
 }
