@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react"
-import ButtonPanel from "../../components/ButtonPanel"
-import Display from "../../components/Display"
-import calculate from "../../logic/calculate"
-import useKey from "../../hooks/useKey"
-import debounce from "just-debounce-it"
+import { useCallback, useState } from 'react'
+import ButtonPanel from '../../components/ButtonPanel'
+import Display from '../../components/Display'
+import calculate from '../../logic/calculate'
+import useKey from '../../hooks/useKey'
+import debounce from 'just-debounce-it'
 
 import '../../App.css'
 
@@ -15,24 +15,19 @@ const INITIAL_STATE = {
 
 const Calculator = () => {
   const [value, setValue] = useState(INITIAL_STATE)
+  const handleDoubleClick = useCallback(debounce((_key = 'Backspace') => {
+    setValue((a) => calculate(a, 'Backspace'))
+  }, 200), [])
 
-  // const handleDoubleClick = debounce((key='Backspace') => setValue((a)=> calculate(a,'Backspace')),200)
-  const handleDoubleClick = useCallback(debounce((_key='Backspace') => {
-    setValue((a)=> calculate(a,'Backspace'))
-  },200),[])
-  
   const handleKeys = useCallback((key) => {
-
-    setValue((a)=> calculate(a,key))
+    setValue((a) => calculate(a, key))
     // setValue(calculate(valuee,key)) -- no funciona porque toma la referencia de cuando se crea.
-  },[])
+  }, [])
   useKey(handleKeys)
-  const handleClick = (event) =>{
-
-    setValue(calculate(value,event))
-    
+  const handleClick = (event) => {
+    setValue(calculate(value, event))
   }
-  return(
+  return (
     <div className="App">
       <div className='container'>
         <Display value={value.total || value.before} handleDoubleClick={handleDoubleClick}/>

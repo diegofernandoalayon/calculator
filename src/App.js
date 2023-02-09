@@ -1,12 +1,9 @@
-import Calculator from './Pages/Calculator';
+import Calculator from './Pages/Calculator'
 
-
-
-function App() {
-
+function App () {
   return (
     <Calculator />
-  );
+  )
 }
 
-export default App;
+export default App
