@@ -14,7 +14,7 @@ const FullScreenButton = () => {
 
   const handleScreen = () => {
     const element = document.documentElement
-    if (window.innerHeight === window.screen.height) {
+    if (document.fullscreenElement) {
       document.exitFullscreen()
       setIsFullScreen(false)
     } else {
